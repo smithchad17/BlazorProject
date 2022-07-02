@@ -1,9 +1,11 @@
-﻿namespace BlazorProject.Models
+﻿using System.Collections.Generic;
+
+namespace BlazorProject.Models
 {
     public class NoteCardModel
     {
-        public string Answer { get; set; }
         public string Question { get; set; }
-
+        public string Answer { get; set; }
+        public bool isComplete { get; set; }
     }
 }
