@@ -1,11 +1,51 @@
 ﻿@page "/notecards"
 
-<h3>NoteCards</h3>
+<PageTitle>Note Cards</PageTitle>
 
-<CardComponent></CardComponent>
+<h1>Note Cards</h1>
+
+<div class="btn">
+    <button class="btn-card" @onclick="addCard">Add Card</button>
+    <button class="btn-card" @onclick="manageCards">Manage Cards</button>
+    <button class="btn-card" @onclick="changeSettings">Settings</button>
+</div>
+
+<div class="card">
+    <div class="card-inner">
+        <div class="side-a">
+            <h2>@Question</h2>
+        </div>
+        <div class="side-b">
+            <h2>@Answer</h2>
+        </div>
+    </div>
+</div>
+
+<div class="card-info">
+    <p>Number of Cards: @totalCards</p>
+    <p>Cards Left: @cardsLeft</p>
+</div>
 
 @code {
 
+    public string Question { get; set; } = "Question?";
+    public string Answer { get; set; } = "Answer!";
+    public int totalCards { get; set; } = 0;
+    public int cardsLeft { get; set; } = 0;
 
+    private void addCard()
+    {
+
+    }
+
+    private void manageCards()
+    {
+
+    }
+
+    private void changeSettings()
+    {
+        
+    }
 
 }
