@@ -4,11 +4,7 @@
 
 <h1>Note Cards</h1>
 
-<div class="btn">
-    <button class="btn-card" @onclick="addCard">Add Card</button>
-    <button class="btn-card" @onclick="manageCards">Manage Cards</button>
-    <button class="btn-card" @onclick="changeSettings">Settings</button>
-</div>
+<CardButtonsComponent></CardButtonsComponent>
 
 <div class="card">
     <div class="card-inner">
@@ -21,70 +17,17 @@
     </div>
 </div>
 
-<div class="card-info">
-    <p>Number of Cards: @totalCards</p>
-    <p>Cards Left: @cardsLeft</p>
-</div>
+<CardInfoComponent></CardInfoComponent>
 
-<h3>Add Cards</h3>
-<EditForm class="form-inline my-2" Model="@newCard" OnValidSubmit="addCard">
-    <label>Question</label>
-    <InputText class="form-control mx-2" @bind-Value="newCard.Question"></InputText>
-    <label>Answer</label>
-    <InputText class="form-control mx-2" @bind-Value="newCard.Answer"></InputText>
-    <button class="btn btn-outline-primary" type="submit">Add Card</button>
-</EditForm>
-<br />
-<h3>Manage Cards</h3>
+<ManageCardsComponent></ManageCardsComponent>
 
-@if (noteCards.Count > 0)
-{
-    <div class="progress my-2">
-        <div class="progress-bar" role="progressbar"
-         style="width: @(percentDone)%" 
-         aria-valuemin="0" aria-valuemax="100">@(percentDone)%</div>
-    </div>
-}
-
-<ul class="list-group">
-    @foreach (var card in noteCards)
-    {
-        @if (card.isComplete)
-        {
-            <li class="list-group-item list-group-item-secondary my-1"
-        @onclick="(()=> card.isComplete = !card.isComplete)">
-                <del><b>Question:</b>@card.Question</del>
-                <del><b>Answer</b>@card.Answer</del>
-            </li>
-        }
-        else
-        {
-            <li class="list-group-item list-group-item-success my-1"
-        @onclick="(()=> card.isComplete = !card.isComplete)">
-                <b>Question:</b>@card.Question
-                <b>Answer</b>@card.Answer
-            </li>
-        }
-
-    }
-</ul>
 
 @code {
 
     public string Question { get; set; } = "Question?";
     public string Answer { get; set; } = "Answer!";
-    private int totalCards { get; set; } = 0;
-    public int cardsLeft { get; set; } = 0;
-    private List<NoteCardModel> noteCards = new List<NoteCardModel>();
-    private NoteCardModel newCard = new NoteCardModel();
 
-    private int percentDone
-    {
-        get
-        {
-            return (noteCards.Count(x => x.isComplete) * 100) / noteCards.Count;
-        }
-    }
+    
 
     protected override void OnInitialized()
     {
@@ -92,22 +35,11 @@
 
     }
 
-
-    private void addCard()
+    private void removeThis()
     {
-        noteCards.Add(newCard);
-        totalCards = noteCards.Count;
-        newCard = new NoteCardModel();
+        
     }
 
-    private void manageCards()
-    {
-
-    }
-
-    private void changeSettings()
-    {
-
-    }
+    
 
 }

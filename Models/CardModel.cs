@@ -2,7 +2,7 @@
 
 namespace BlazorProject.Models
 {
-    public class NoteCardModel
+    public class CardModel
     {
         public string Question { get; set; }
         public string Answer { get; set; }

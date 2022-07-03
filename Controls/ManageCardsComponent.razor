@@ -1,0 +1,48 @@
+﻿
+
+@if (card.noteCards.Count > 0)
+{
+    <div class="progress my-2">
+        <div class="progress-bar" role="progressbar"
+         style="width: @(percentDone)%" 
+         aria-valuemin="0" aria-valuemax="100">@(percentDone)%</div>
+    </div>
+}
+
+<AddCardComponent @ref="card"></AddCardComponent>
+
+<ul class="list-group">
+    @foreach (var card in card.noteCards)
+    {
+        @if (card.isComplete)
+        {
+            <li class="list-group-item list-group-item-secondary my-1"
+        @onclick="(()=> card.isComplete = !card.isComplete)">
+                <del><b>Question:</b>@card.Question</del>
+                <del><b>Answer</b>@card.Answer</del>
+            </li>
+        }
+        else
+        {
+            <li class="list-group-item list-group-item-success my-1"
+        @onclick="(()=> card.isComplete = !card.isComplete)">
+                <b>Question:</b>@card.Question
+                <b>Answer</b>@card.Answer
+            </li>
+        }
+
+    }
+</ul>
+
+@code {
+    
+
+    //private int percentDone
+    //{
+    //    get
+    //    {
+    //        return (card.noteCards.Count(x => x.isComplete) * 100) / card.noteCards.Count;
+    //    }
+    //}
+
+}
