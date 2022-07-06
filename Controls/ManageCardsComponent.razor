@@ -1,18 +1,23 @@
-﻿
-
-@if (card.noteCards.Count > 0)
+﻿@*@if (card.noteCards.Count > 0)
 {
     <div class="progress my-2">
         <div class="progress-bar" role="progressbar"
-         style="width: @(percentDone)%" 
-         aria-valuemin="0" aria-valuemax="100">@(percentDone)%</div>
+         style="width: @(percentDone)%"
+         aria-valuemin="0" aria-valuemax="100">
+            @(percentDone)%
+        </div>
     </div>
-}
+}*@
 
-<AddCardComponent @ref="card"></AddCardComponent>
+@inject Card card
 
-<ul class="list-group">
-    @foreach (var card in card.noteCards)
+<AddCardComponent></AddCardComponent>
+
+<h3>@card.GetCardType()</h3>
+
+@*<ul class="list-group">
+    
+    @foreach (var card in card.cardList)
     {
         @if (card.isComplete)
         {
@@ -32,10 +37,17 @@
         }
 
     }
-</ul>
+</ul>*@
 
 @code {
-    
+    //private Card cards;
+
+    protected override void OnInitialized()
+    {
+        //cards = new();
+    }
+
+   
 
     //private int percentDone
     //{
