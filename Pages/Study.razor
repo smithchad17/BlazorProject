@@ -1,0 +1,36 @@
+﻿@page "/study"
+
+<h3>Study</h3>
+
+<div class="card">
+    <div class="card-inner">
+        <div class="side-a">
+            <h2>@Question</h2>
+        </div>
+        <div class="side-b">
+            <h2>@Answer</h2>
+        </div>
+    </div>
+</div>
+
+
+
+<CardInfoComponent></CardInfoComponent>
+
+
+@code {
+
+    public string Question { get; set; } = "Question?";
+    public string Answer { get; set; } = "Answer!";
+
+    List<string> groups = new List<string>()
+    {
+        "Math", "Chemistry", "History"
+    };
+
+    public void Next()
+    {
+        
+    }
+
+}

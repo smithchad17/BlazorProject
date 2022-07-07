@@ -1,37 +1,41 @@
-﻿
-<div class="btn">
-    <button class="btn-card" @onclick="manageCards">Manage Cards</button>
-    <button class="btn-card" @onclick="changeSettings">Settings</button>
-    <button class="btn-card" @onclick="changeGroup">Change Group</button>
-    <button class="btn-card" @onclick="startCards">Start Studying</button>
-</div>
+﻿@inject NavigationManager UriHelper
 
 
+@foreach (var btext in buttonText)
+{
+    <div class="btn">
+        <button class="btn-card" @onclick="() => Navigate(btext)">@btext</button>
+    </div>
+}
 
 @code {
 
-    private void addCard()
+    List<string> buttonText = new List<string>
     {
-        
+        "Start Studying", "Manage Cards", "Settings"
+    };
+
+
+    void Navigate(string whereTo)
+    {
+        string tempNav;
+        switch (whereTo)
+        {
+            case "Start Studying":
+                tempNav = "study";
+                UriHelper.NavigateTo("/" + tempNav);
+                break;
+            case "Manage Cards":
+                tempNav = "manage";
+                UriHelper.NavigateTo("/" + tempNav);
+                break;
+            case "Settings":
+                tempNav = "settings";
+                UriHelper.NavigateTo("/" + tempNav);
+                break;
+        }
+
     }
 
-    private void manageCards()
-    {
 
-    }
-
-    private void changeSettings()
-    {
-
-    }
-
-    private void changeGroup()
-    {
-
-    }
-
-    private void startCards()
-    {
-
-    }
 }

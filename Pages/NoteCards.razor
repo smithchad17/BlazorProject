@@ -4,30 +4,29 @@
 
 <h1>Note Cards</h1>
 
-@*<CardButtonsComponent></CardButtonsComponent>*@
+<CardButtonsComponent></CardButtonsComponent>
 
-<div class="card">
-    <div class="card-inner">
-        <div class="side-a">
-            <h2>@Question</h2>
-        </div>
-        <div class="side-b">
-            <h2>@Answer</h2>
-        </div>
-    </div>
+<br />
+<br />
+
+<div>
+<p><b>Pick a Group</b></p>
+<select class="form-control">
+    <option>--Select--</option>
+    @foreach (var item in groups)
+    {
+        <option>@item</option>
+    }
+</select>
 </div>
 
-@*<CardInfoComponent></CardInfoComponent>*@
-
-<ManageCardsComponent></ManageCardsComponent>
 
 
 @code {
-
-    public string Question { get; set; } = "Question?";
-    public string Answer { get; set; } = "Answer!";
-
-    
+    List<string> groups = new List<string>()
+    {
+        "Math", "Chemistry", "History"
+    };
 
     protected override void OnInitialized()
     {
@@ -37,9 +36,7 @@
 
     private void removeThis()
     {
-        
-    }
 
-    
+    }
 
 }
