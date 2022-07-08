@@ -13,7 +13,9 @@
     </div>
 </div>
 
+<GroupDropDownComponent></GroupDropDownComponent>
 
+<button class="btn-card">Next Card</button>
 
 <CardInfoComponent></CardInfoComponent>
 
@@ -23,10 +25,7 @@
     public string Question { get; set; } = "Question?";
     public string Answer { get; set; } = "Answer!";
 
-    List<string> groups = new List<string>()
-    {
-        "Math", "Chemistry", "History"
-    };
+    
 
     public void Next()
     {
